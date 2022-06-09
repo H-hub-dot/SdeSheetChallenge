@@ -1,0 +1,17 @@
+/*...................................................Pascal’s Triangle(i have done this using trick and formula, #smart solutions)............................................................................................*/
+
+vector<vector<int>> generate(int n) {
+   vector<vector<int>>ans;
+   for(int i=1;i<=n;i++)
+   {
+     vector< int>dup_ans(i,1);
+        int num=1;
+       for(int j=1;j<=i;j++)
+       {
+           dup_ans[j-1]=num;
+          num=num*(i-j)/j;  
+       }
+       ans.push_back(dup_ans);   
+   }
+    return ans;
+    }
