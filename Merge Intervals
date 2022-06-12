@@ -1,0 +1,32 @@
+/*************************************************************************************Merge Intervals*******************************************************************/
+
+ vector<vector<int>> merge(vector<vector<int>>& intervals) 
+    {
+        
+        int n=intervals.size();
+        sort(intervals.begin(),intervals.end());
+        if(n==0)
+        {
+            return intervals;
+        }
+        
+        vector<vector<int>>ans;
+        
+        vector<int>sub_ans=intervals[0];
+        
+        for(int i=0;i<n;i++)
+        {
+            if(intervals[i][0]<=sub_ans[1])
+            {
+                sub_ans[1]=max(sub_ans[1],intervals[i][1]);
+            }
+            else
+            {
+                ans.push_back(sub_ans);
+                sub_ans=intervals[i];
+            }
+               
+        }
+        ans.push_back(sub_ans);
+        return ans;   
+    }
